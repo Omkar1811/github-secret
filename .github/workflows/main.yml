@@ -18,9 +18,13 @@ jobs:
         node-version: [16.x]
 
     steps:
-    - uses: actions/setup-node@v1
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm install
-    - run: ng build
-    - run: ng test
+    - run: npm run build
+    - run: npm test:headless
+      env:
+        CI: true
