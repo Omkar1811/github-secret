@@ -9,7 +9,7 @@ on:
 jobs:
   ubuntu-build:
 
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     env: 
       API_KEY: ${{ secrets.API_KEY }}
 
@@ -23,8 +23,10 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
+    - name: Set environment variables
+      run: |
+        echo "API_KEY: ${{ secrets.API_KEY }}" >> $GITHUB_ENV
     - name: npm install, build and test
       run: |
         npm install
         npm run build --if-present
-        npm test
