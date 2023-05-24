@@ -3,10 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SecretManagerComponent } from './secret-manager/secret-manager.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SecretManagerComponent
   ],
   imports: [
     BrowserModule,
